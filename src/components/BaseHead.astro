@@ -1,0 +1,71 @@
+---
+// Props:
+// title, description, image, url, noIndex, themeColor,
+// preconnect: array of urls, preloadFonts: array of { href, type, crossorigin? }
+// structuredData: an object to render as JSON-LD
+const {
+  title = 'My web',
+  description = 'Default description',
+  image = undefined,
+  url = undefined,
+  noIndex = false,
+  themeColor = '#0ea5a4',
+  preconnect = [],
+  preloadFonts = [],
+  structuredData = null
+}: {
+  title?: string;
+  description?: string;
+  image?: string | undefined;
+  url?: string | undefined;
+  noIndex?: boolean;
+  themeColor?: string;
+  preconnect?: string[];
+  preloadFonts?: { href: string; type: string; crossorigin?: boolean }[];
+  structuredData?: any;
+} = Astro.props;
+
+const twitterCard = image ? 'summary_large_image' : 'summary';
+---
+
+<!-- Basic -->
+<title>{title}</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content={description} />
+{noIndex ? <meta name="robots" content="noindex, nofollow" /> : null}
+{url ? <link rel="canonical" href={url} /> : null}
+<meta name="theme-color" content={themeColor} />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+{image ? <meta property="og:image" content={image} /> : null}
+{url ? <meta property="og:url" content={url} /> : null}
+
+<!-- Twitter -->
+<meta name="twitter:card" content={twitterCard} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{image ? <meta name="twitter:image" content={image} /> : null}
+
+<!-- Performance hints -->
+{preconnect.map((href: string) => (
+  <link rel="preconnect" href={href} crossorigin />
+))}
+
+{preloadFonts.map((f: { href: string; type: string; crossorigin?: boolean }) => (
+  <link
+    rel="preload"
+    href={f.href}
+    as="font"
+    type={f.type}
+    crossorigin={f.crossorigin ? 'anonymous' : undefined}
+  />
+))}
+
+<!-- Structured data (JSON-LD) -->
+{structuredData ? (
+  <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+) : null}
