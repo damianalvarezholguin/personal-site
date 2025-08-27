@@ -3,6 +3,7 @@ import mdx from '@astrojs/mdx';
 import { defineConfig, envField } from 'astro/config';
 
 import vercel from '@astrojs/vercel';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,7 +14,11 @@ export default defineConfig({
       schema: {
           PUBLIC_SITE_URL: envField.string({context: 'client', access: 'public', optional: true})
       }
-	},
+    },
 
-  adapter: vercel()
+  adapter: vercel(),
+
+  vite: {
+    plugins: [tailwindcss()]
+  }
 });

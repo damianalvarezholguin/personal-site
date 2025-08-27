@@ -46,6 +46,6 @@ const renderer = {
 };
 var server_default = renderer;
 
-const renderers = [Object.assign({"name":"astro:jsx","serverEntrypoint":"file:///Users/damianalvarezholguin/code/personal-projects/personal-site/node_modules/.pnpm/@astrojs+mdx@4.3.4_astro@5.13.3_@types+node@24.3.0_@vercel+functions@2.2.13_rollup@4.48.1_typescript@5.9.2_/node_modules/@astrojs/mdx/dist/server.js"}, { ssr: server_default }),];
+const renderers = [Object.assign({"name":"astro:jsx","serverEntrypoint":"file:///Users/damianalvarezholguin/code/personal-projects/personal-site/node_modules/.pnpm/@astrojs+mdx@4.3.4_astro@5.13.3_@types+node@24.3.0_@vercel+functions@2.2.13_jiti@2.5.1_lightn_bxlf2w762kmrv5nqgk73v2kjyq/node_modules/@astrojs/mdx/dist/server.js"}, { ssr: server_default }),];
 
 export { renderers };
