@@ -1,0 +1,23 @@
+---
+import { SITE_URL } from '../consts';
+import BaseHead from '../components/BaseHead.astro'
+
+const canonical = new URL(Astro.url.pathname, SITE_URL).toString();
+const ogImage = new URL('/images/og.jpg', SITE_URL).toString();
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead 
+		title="Home"
+		description="Damian Alvarez portfolio"
+		url={canonical}
+		noIndex=true
+		img={ogImage}
+		/>
+  </head>
+  <body>
+    <h1>Hello World</h1>
+  </body>
+</html>
