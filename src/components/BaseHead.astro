@@ -1,8 +1,4 @@
 ---
-// Props:
-// title, description, image, url, noIndex, themeColor,
-// preconnect: array of urls, preloadFonts: array of { href, type, crossorigin? }
-// structuredData: an object to render as JSON-LD
 const {
   title = 'My web',
   description = 'Default description',
@@ -36,6 +32,13 @@ const twitterCard = image ? 'summary_large_image' : 'summary';
 {noIndex ? <meta name="robots" content="noindex, nofollow" /> : null}
 {url ? <link rel="canonical" href={url} /> : null}
 <meta name="theme-color" content={themeColor} />
+
+<!-- Favicons / PWA (using rounded PNGs) -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon-32-rounded.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32-rounded.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16-rounded.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180-rounded.png" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
