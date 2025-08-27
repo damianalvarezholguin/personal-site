@@ -6,11 +6,16 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "build:images": "node scripts/images/build.mjs",
+    "prebuild": "pnpm run build:images"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.4",
-    "astro": "^5.13.3",
-    "sharp": "^0.34.2"
+    "astro": "^5.13.3"
+  },
+  "devDependencies": {
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.3"
   }
 }
