@@ -1,1 +1,35 @@
 @import "tailwindcss";
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #ffffff;
+    --text: #0f172a;
+    --accent: #0ea5a4;
+  }
+
+  /* preferencia del sistema */
+  @media (prefers-color-scheme: dark) {
+    :root{
+      --bg: #0b1220;
+      --text: #ffffff;
+    }
+  }
+
+  /* override manual vía clase */
+  html.dark {
+    --bg: #0b1220;
+    --text: #ffffff;
+  }
+
+  html, body {
+    min-height: 100%;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color .2s ease, color .2s ease;
+  }
+}
