@@ -9,7 +9,6 @@
     --accent: #0ea5a4;
   }
 
-  /* preferencia del sistema */
   @media (prefers-color-scheme: dark) {
     :root{
       --bg: #0b1220;
@@ -17,7 +16,6 @@
     }
   }
 
-  /* override manual vía clase */
   html.dark {
     --bg: #0b1220;
     --text: #ffffff;
